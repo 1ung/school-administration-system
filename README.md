@@ -48,7 +48,7 @@ CREATE DATABASE schooldb;
 <br>
 
 ### From Command Line
-This will generate all Tables from models
+This will generate all Tables from models (make sure that your "username" and "password" matches in "development" from config.json)
 ```bash
 npm run dev
 ```
