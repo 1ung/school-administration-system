@@ -76,6 +76,7 @@ http://localhost:3000/api/all-teacher
 ### From Postman:
 ### Step 1
 Populate your Tables from the following endpoint by filling up:
+
 <b>Teachers</b>:
 teacher_name
 teacher_email
