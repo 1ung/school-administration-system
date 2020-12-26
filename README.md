@@ -25,7 +25,7 @@
 <br>
 
 ## Commands
-All the commands listed should be ran in ./javascript directory.
+All the commands listed should be ran in the root directory.
 
 ### Installing dependencies
 ```bash
