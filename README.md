@@ -1,31 +1,25 @@
-# Interview Assignment (v2.0.1)
-
-This package contains the base code for the interview assignment.<br>
-You can add additional library that will aid you in fulfiling the requirements.
-<br>
-<br>
-Please read through NodeJS_Assessment.pdf carefully before you attempt.
-
 ## Prerequisites
-- NodeJS v12.x.x
-- Docker
+- NodeJS v15.5.0
+- MySQL Workbench
+- Postman
+- nodemon
 
 <br>
 
 ## Package Structure
 | S/N | Name | Type | Description |
 |-----|------|------|-------------|
-| 1 | javascript | dir | This holds the base code which you should extend in order to fulfil the requirements |
-| 2 | NodeJS_Assessment.pdf | file | The specification for the assignment |
+| 1 | controllers | dir | This holds the CRUD functions for existing tables |
+| 2 | models | dir | This holds all the Table models to generate respective Tables  |
 | 3 | README.md | file | This file |
-| 4 | school-administration-system.postman_collection.json | file | Postman script for uploading file |
+| 4 | route.js | file | This defines all the Method, Endpoint and Functions for each route |
 
 <br>
 
 ## Exposed Port
 | S/N | Application | Exposed Port |
 |-----|-------------|--------------|
-| 1 | database | 33306 |
+| 1 | database | 3306 |
 | 2 | applicaiton | 3000 |
 
 <br>
@@ -43,8 +37,20 @@ npm install
 ### Starting Project
 Starting the project in local environment.
 This will start all the dependencies services i.e. database.
+
+### MySQL Workbench
+In Query, paste the following lines:
 ```bash
-npm start
+DROP DATABASE IF EXISTS schooldb;
+CREATE DATABASE schooldb;
+```
+
+<br>
+
+### From Command Line
+This will generate all Tables from models (make sure that your "username" and "password" matches in "development" from config.json)
+```bash
+npm run dev
 ```
 
 <br>
@@ -58,30 +64,57 @@ npm run start:dev
 <br>
 
 ### Check local application is started
-You should be able to call (GET) the following endpoint and get a 200 response
+Your MySQL Workbench Tables should be populated after trying "Reconnect to DBMS"
+You should be able to fetch an empty array the following endpoint
 
 ```
-http://localhost:3000/api/healthcheck
+http://localhost:3000/api/all-teacher
 ```
 
 <br>
 
-## Extras
+### From Postman:
+### Step 1
+Populate your Tables from the following endpoint by filling up:
 
-### Database
-You can place your database migration scripts in javascript/database folder. <br>
-It will be ran the first time MySQL docker container is first initialised. <br><br>
-Please provide the instruction on how to initialise the database if you are not using the above method.
-
+<b>Teachers</b>:
+teacher_name,
+teacher_email
 <br>
-
-## FAQ
-
-### Error when starting up
-If you encounter the following error when running ```npm start```, it is due to the slow startup of your database container.<br>
-Please run ```npm start``` again.
+<b>Students</b>:
+student_name,
+student_email
+<br>
+<b>Subjects</b>:
+subject_code,
+subject_name
+<br>
+<b>Classes</b>:
+class_code,
+class_name
 
 ```
-[server.js]	ERROR	SequelizeConnectionError: Connection lost: The server closed the connection.
-[server.js]	ERROR	Unable to start application
+http://localhost:3000/api/register
+```
+### Step 2
+Assign Class and Subject to Teacher(s) (you can assign one class & subject to multiple teachers each time) from the following endpoint by filling up:
+
+<b>Teachers</b>:
+teacher_email
+<br>
+<b>Class</b>:
+class_code
+<br>
+<b>Subject</b>:
+subject_code
+
+```
+http://localhost:3000/api/create-tsc
+```
+
+### Step 3
+View Teacher's Workload from the following endpoint:
+
+```
+http://localhost:3000/api/reports/workload/
 ```
