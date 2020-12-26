@@ -78,19 +78,27 @@ http://localhost:3000/api/all-teacher
 Populate your Tables from the following endpoint by filling up:
 
 <b>Teachers</b>:
+
 teacher_name
+
 teacher_email
 <br>
 <b>Students</b>:
+
 student_name
+
 student_email
 <br>
 <b>Subjects</b>:
+
 subject_code
+
 subject_name
 <br>
 <b>Classes</b>:
+
 class_code
+
 class_name
 
 ```
